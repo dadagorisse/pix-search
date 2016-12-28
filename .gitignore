@@ -1,0 +1,20 @@
+# java and mvn build
+build/
+target/
+.settings/
+.classpath
+.settings
+.project
+.checkstyle
+.idea/
+*.jar
+*.iml
+
+# temporary editor files
+*~
+*.swp
+
+# python specific
+*.pyc
+**/env/
+
