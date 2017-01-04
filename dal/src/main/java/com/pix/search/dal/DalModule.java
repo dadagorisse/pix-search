@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.pix.search.dal.views.ImageView;
 import com.typesafe.config.ConfigFactory;
 
 public class DalModule extends AbstractModule {
@@ -23,4 +24,11 @@ public class DalModule extends AbstractModule {
     DataSourceProvider dataSourceProvider(ComboPooledDataSource cpds, JdbcConfigurationProvider jdbcConfigurationProvider) {
         return new DataSourceProvider(cpds, jdbcConfigurationProvider.get());
     }
+
+    @Provides
+    @Singleton
+    ImageView imageView(DataSourceProvider dataSourceProvider) {
+        return new ImageView(dataSourceProvider.get());
+    }
+
 }
