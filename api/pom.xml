@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.pix.search</groupId>
+        <artifactId>pix-search-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>api</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <main.class>com.pix.search.api.app.PixSearchServerMain</main.class>
+        <finatra.version>2.1.5</finatra.version>
+        <logback-classic.version>1.1.2</logback-classic.version>
+    </properties>
+
+    <dependencies>
+        <!-- Scala -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+
+        <!-- Finatra -->
+        <dependency>
+            <groupId>com.twitter.finatra</groupId>
+            <artifactId>finatra-http_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.finatra</groupId>
+            <artifactId>finatra-jackson_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>util-stats_${scala.version.short}</artifactId>
+            <version>6.33.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.inject</groupId>
+            <artifactId>inject-utils_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.finatra</groupId>
+            <artifactId>finatra-http_${scala.version.short}</artifactId>
+            <scope>test</scope>
+            <type>test-jar</type>
+            <version>${finatra.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.inject</groupId>
+            <artifactId>inject-modules_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.inject</groupId>
+            <artifactId>inject-core_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.inject</groupId>
+            <artifactId>inject-app_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.version.short}</artifactId>
+            <version>${scalatest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- dependency required by com.twitter.inject.Mockito
+          to implement Trait org.specs2.mock -->
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-mock_${scala.version.short}</artifactId>
+            <version>3.7-scalaz-7.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+            <version>${mockito.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-testlib</artifactId>
+            <scope>test</scope>
+            <version>${guice.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.twitter.inject</groupId>
+            <artifactId>inject-server_${scala.version.short}</artifactId>
+            <version>${finatra.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+            </plugin>
+            <!-- disable surefire -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- enable scalatest -->
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>1.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
